@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="calculator.css">
+<link href="https://fonts.googleapis.com/css?family=Righteous|Roboto&display=swap" rel="stylesheet">
+    
+<title>JavaScript Hike Calculator</title>
+</head>
+
+<body>
+<div id="container">
+<h1>JavaScript Hike Calculator</h1>
+
+    <p>Enter your bodyweight in pounds (including any weight you'll be carrying):<input type="text" name="weight" id="weight"></p>
+    
+    <p>Choose a trail: <select name="trail" id="trail">
+    <option value="90">Upper Hawksbill Trail</option>
+    <option value="540">Old Rag Trail</option>
+    <option value="150">Humpback Rocks</option>
+    <option value="240">White Oak Canyon</option>
+    </select>
+    </p>
+    
+    <p>
+    <button id="calc">Calculate</button>
+	</p>
+    
+    <div id="empty"></div><p>Calories burned on this hike</p>
+    
+<script type="text/javascript">
+    
+// Save the calculate button id to a variable.
+var btn = document.getElementById('calc');
+    
+// Then call the calculateCalories function when the button is clicked.
+btn.onclick = calculateCalories;
+    
+// Function to retrieve form inputs and calculate calories.
+function calculateCalories() {
+    
+// Save the weight input id to a variable.
+	 var weight = document.getElementById('weight').value;
+    
+// If entered weight is more than 800, alert will display.
+        if (weight > 800) {
+        alert("Error: form cannot be submitted. Please enter a weight under 800 pounds.");
+        }
+    
+// If entered weight is under 800, calories burned will display.
+    else {
+	 var trail = document.getElementById('trail').value;
+        
+// console.log
+	 var kilograms = weight / 2.2; 
+     var burnpermin = kilograms * .07;
+     var totalcalories = burnpermin * trail;
+
+// Result is placed in empty div and rounded to the nearest integer.
+	 resultBox = document.getElementById('empty');
+	 resultBox.innerHTML = Math.round(totalcalories);
+        }
+} // end calculateCalories()
+</script>   
+    
+</div>
+</body>
+</html>
